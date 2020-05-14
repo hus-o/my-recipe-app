@@ -27,7 +27,7 @@ router.get('/recipe/:id', function(req, res, next) {
 
 
 // *** add activity *** //
-router.post('/recipe', function(req, res, next) {
+router.post('/addrecipe', function(req, res, next) {
     console.log(req.body)
   knex("recipes").insert(req.body, "id")
   .then(function(recipeID){
@@ -35,7 +35,7 @@ router.post('/recipe', function(req, res, next) {
     console.log(recipeID)
   })
   .then(function(recipe) {
-    res.redirect("/view")
+    res.redirect("http://localhost:3001/view")
   })
   .catch(function(error) {
     next(error);
