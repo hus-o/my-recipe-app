@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios"
+import {Link} from 'react-router-dom'
 
 class AddRecipe extends Component {
     constructor(props) {
@@ -8,7 +9,8 @@ class AddRecipe extends Component {
             name: "",
             ingredients: "",
             recipe: "",
-            time: 0
+            time: 0,
+            apiResponse: ""
          }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,7 +32,10 @@ class AddRecipe extends Component {
               recipe: this.state.recipe,
               time_taken_minutes: this.state.time
           }
-          )
+          ).then(response => {
+              console.log(response)
+              this.setState({apiResponse:response.data})
+          })
         };
 
     render() { 
@@ -38,28 +43,36 @@ class AddRecipe extends Component {
             <React.Fragment>
                 <form>
                     <label htmlFor="recipeName">
-                        Name of recipe
+                        Name of recipe: 
                     <input type="text" id="recipeName" name="name" value = {this.state.name}
                         onChange={this.handleChange}/>
-                    </label>
+                    </label><br/><br/>
                     <label htmlFor="recipeIngredients">
-                        Ingredients
+                        Ingredients:
                     <textarea id="recipeIngredients" name="ingredients" value = {this.state.ingredients}
                         onChange={this.handleChange}/>
-                    </label>
+                    </label><br/><br/>
                     <label htmlFor="recipeInstructions">
-                        Instructions
+                        Instructions: 
                     <textarea id="recipeInstructions" name="recipe" value = {this.state.recipe}
                         onChange={this.handleChange}/>
-                    </label>
+                    </label><br/><br/>
                     <label htmlFor="recipeTime">
-                        Time taken in minutes
+                        Time taken in minutes: 
                     {/* <input type="number" id="recipeTime" name="time_taken_minutes" value = {this.state.time}
                         onChange={this.handleChange}/> */}
                     <input id="recipeTime" name="time_taken_minutes" value={this.state.time} onChange={event => this.setState({time: event.target.value.replace(/\D/,'')})}/>
-                    </label>
+                    </label><br/><br/>
                     <input type="submit" onClick={this.handleSubmit}/>
                 </form>
+                {this.state.apiResponse ? 
+                <div>
+                    <h2>{this.state.apiResponse}</h2>
+                    <Link to="/view">
+                    <input type="button" value="View" />
+                    </Link>
+                </div> 
+                : <h2>Nothing submitted yet</h2>}
             </React.Fragment>
          );
     }

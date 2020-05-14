@@ -35,7 +35,7 @@ router.post('/addrecipe', function(req, res, next) {
     console.log(recipeID)
   })
   .then(function(recipe) {
-    res.redirect("http://localhost:3001/view")
+    res.send("Thanks for submission")
   })
   .catch(function(error) {
     next(error);
