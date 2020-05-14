@@ -4,7 +4,6 @@ import ViewRecipe from "../components/viewRecipe"
 
 describe("View Page", () =>{
     const wrapper = shallow(<ViewRecipe />)
-    beforeEach()
     it('calls componentDidMount', () => {
         const spy = jest.spyOn(ViewRecipe.prototype, 'componentDidMount');
         wrapper.instance().componentDidMount();
