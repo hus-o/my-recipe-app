@@ -10,10 +10,21 @@ class ViewRecipe extends Component {
     }
 
     async getRecipes(){
-        const apiData = await axios("http://localhost:3000/test")
-        return apiData.data
+        const apiData = await axios("http://localhost:3000/all")
+        console.log(apiData)
+        return apiData.data.recipes
     }
 
+    renderData(){
+        const {recipeData} = this.state
+        return(
+        recipeData.map((element) => (
+            <ul>
+                <li>Name: {element.name}</li>
+                <li>Ingredients: {element.ingredients}</li>
+            </ul>
+        )));
+    }
     componentDidMount(){
         this.getRecipes().then(data => {
             console.log(data)
@@ -25,7 +36,9 @@ class ViewRecipe extends Component {
         console.log(this.state.recipeData)
         return ( 
             <React.Fragment>
-                {this.state.recipeData ? <h1>{this.state.recipeData}</h1> : <h1>Loading</h1>}
+                {this.state.recipeData ? 
+                this.renderData() :
+                 <h1>Loading</h1>}
             </React.Fragment>
          );
     }
