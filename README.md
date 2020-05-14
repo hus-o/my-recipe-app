@@ -5,7 +5,7 @@
 * To run please npm install to install all packages
 * Then, create a .env file at top level populating with correct DB_USER and DB_PASS credentials
 
-### Notes
+### Working Notes
 * Installed all currently required packages, seeded table
 * Large struggle getting react to work on same port as node, eventually decided to work on different ports.
 * Had to for the time being allow all origins for CORS Access-Control-Allow-Origin, as each new route caused an issue
@@ -14,3 +14,6 @@
 * Post page has a form which posts to db and redirects to view page so user can see new post
 * The time taken input has a constraint to prevent anything other than number. The reason for this rather than input type=number was because the latter caused input issues where I couldn't change the value of the field.
 * Issue when trying to redirect users on form submission due to CORS error, so I just sent a response back to display after the api call, to which I added a button for users to click
+
+### Additional Comments
+* I would've liked to add more tests (functional ones) and styled it up and added pages for updating and deleting entries had time permitted and I didn't run into tons of errors with http requests and react & node joining
