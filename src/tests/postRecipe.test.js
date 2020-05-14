@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import AddRecipe from '../components/postRecipe';
-import { spy } from 'sinon';
 
 describe("Posting Recipe", () =>{
     it("should return if submit works", () => {

@@ -23,6 +23,8 @@ class ViewRecipe extends Component {
             <ul key={index}>
                 <li>Name: {element.name}</li>
                 <li>Ingredients: {element.ingredients}</li>
+                <li>Instructions: {element.recipe}</li>
+                <li>Time taken (mins): {element.time_taken_minutes}</li>
             </ul>
         )));
     }
