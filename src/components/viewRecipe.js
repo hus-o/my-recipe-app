@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios"
+import {Link} from 'react-router-dom'
 
 class ViewRecipe extends Component {
     constructor(props) {
@@ -18,8 +19,8 @@ class ViewRecipe extends Component {
     renderData(){
         const {recipeData} = this.state
         return(
-        recipeData.map((element) => (
-            <ul>
+        recipeData.map((element,index) => (
+            <ul key={index}>
                 <li>Name: {element.name}</li>
                 <li>Ingredients: {element.ingredients}</li>
             </ul>
@@ -39,6 +40,12 @@ class ViewRecipe extends Component {
                 {this.state.recipeData ? 
                 this.renderData() :
                  <h1>Loading</h1>}
+                <Link to="/">
+                <input type="button" value="Home" />
+                </Link>
+                <Link to="/add">
+                <input type="button" value="Add" />
+                </Link>
             </React.Fragment>
          );
     }
