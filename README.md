@@ -13,3 +13,4 @@
 * On trying to do POST method on the post component I ran into the CORS issue again, after installing cors module and app.use(cors()) globally on server this problem was alliviated. Took a long time for such a simple thing and it ate into my testing / styling time but I'm happy I got there in the end, now I know for the future.
 * Post page has a form which posts to db and redirects to view page so user can see new post
 * The time taken input has a constraint to prevent anything other than number. The reason for this rather than input type=number was because the latter caused input issues where I couldn't change the value of the field.
+* Issue when trying to redirect users on form submission due to CORS error, so I just sent a response back to display after the api call, to which I added a button for users to click
